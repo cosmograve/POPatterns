@@ -23,8 +23,10 @@ struct PatternDetailView: View {
             
             Image(vm.patterns[selectedIndex].image)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
+                .frame(width: getRect().width - 48)
                 .frame(height: getRect().height / 4)
+                .clipped()
                 .background(RoundedRectangle(cornerRadius: 15).fill(.white))
                 .padding(.bottom)
             ScrollView {
@@ -50,6 +52,6 @@ struct PatternDetailView: View {
 }
 
 #Preview {
-    PatternDetailView(selectedIndex: 0)
+    PatternDetailView(selectedIndex: 3)
         .environmentObject(ViewModel())
 }
